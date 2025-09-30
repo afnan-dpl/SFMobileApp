@@ -1,0 +1,61 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 .AppleSystemUIFontMonospaced-Regular;\f1\fnil\fcharset0 AppleColorEmoji;}
+{\colortbl;\red255\green255\blue255;\red151\green0\blue126;\red0\green0\blue0;\red181\green0\blue19;
+\red20\green0\blue196;\red13\green100\blue1;}
+{\*\expandedcolortbl;;\cssrgb\c66667\c5098\c56863;\csgray\c0;\cssrgb\c76863\c10196\c8627;
+\cssrgb\c10980\c0\c81176;\cssrgb\c0\c45490\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww16280\viewh13360\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs26 \cf2 INSERT INTO\cf3  daily_activity_summary (\
+    user_id,\
+    date,\
+    total_sweeping_time,\
+    total_mopping_time,\
+    total_scrubbing_time,\
+    total_other_time,\
+    total_idle_time,\
+    created_at,\
+    updated_at\
+)\
+\cf2 SELECT\cf3  \
+    user_id,\
+    DATE(start_time) \cf2 AS\cf3  date,\
+    SUM(\cf2 CASE\cf3  \cf2 WHEN\cf3  prediction = \cf4 'Sweeping'\cf3  \cf2 THEN\cf3  duration \cf2 ELSE\cf3  \cf5 0\cf3  \cf2 END\cf3 ) \cf2 AS\cf3  total_sweeping_time,\
+    SUM(\cf2 CASE\cf3  \cf2 WHEN\cf3  prediction = \cf4 'Mopping'\cf3  \cf2 THEN\cf3  duration \cf2 ELSE\cf3  \cf5 0\cf3  \cf2 END\cf3 ) \cf2 AS\cf3  total_mopping_time,\
+    SUM(\cf2 CASE\cf3  \cf2 WHEN\cf3  prediction = \cf4 'Scrubbing'\cf3  \cf2 THEN\cf3  duration \cf2 ELSE\cf3  \cf5 0\cf3  \cf2 END\cf3 ) \cf2 AS\cf3  total_scrubbing_time,\
+    SUM(\cf2 CASE\cf3  \cf2 WHEN\cf3  prediction = \cf4 'Other'\cf3  \cf2 THEN\cf3  duration \cf2 ELSE\cf3  \cf5 0\cf3  \cf2 END\cf3 ) \cf2 AS\cf3  total_other_time,\
+    SUM(\cf2 CASE\cf3  \cf2 WHEN\cf3  prediction = \cf4 'Idle'\cf3  \cf2 THEN\cf3  duration \cf2 ELSE\cf3  \cf5 0\cf3  \cf2 END\cf3 ) \cf2 AS\cf3  total_idle_time,\
+    NOW(),\
+    NOW()\
+\cf2 FROM\cf3  workforce_activity\
+\cf2 WHERE\cf3  DATE(start_time) = \cf4 '2025-09-12\'92\cf3   \cf6 -- 
+\f1 \uc0\u55357 \u56633 
+\f0  Specific date\cf3 \
+\cf2 GROUP\cf3  \cf2 BY\cf3  user_id, DATE(start_time)\
+\cf2 ON\cf3  DUPLICATE KEY \cf2 UPDATE\cf3 \
+    total_sweeping_time = \cf2 VALUES\cf3 (total_sweeping_time),\
+    total_mopping_time = \cf2 VALUES\cf3 (total_mopping_time),\
+    total_scrubbing_time = \cf2 VALUES\cf3 (total_scrubbing_time),\
+    total_other_time = \cf2 VALUES\cf3 (total_other_time),\
+    total_idle_time = \cf2 VALUES\cf3 (total_idle_time),\
+    updated_at = NOW();\
+\
+\
+\
+\
+ /// Insert into daily acticity\
+INSERT INTO workforce_activity (user_id, prediction, start_time, duration)\
+VALUES (\
+  'user_1',\
+  'Mopping',\
+  DATE_FORMAT(DATE_SUB(UTC_TIMESTAMP(), INTERVAL 1 MINUTE), '%Y-%m-%dT%H:%i:%s.000Z'),\
+  5\
+);\
+\
+\
+\
+\
+swwqrw \
+\
+}
