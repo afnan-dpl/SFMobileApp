@@ -66,16 +66,14 @@ const combinePredictions = (predictions) => {
         return;
       } else {
         lastPrediction.end_time = prediction.start_time; // Set end time before changing type
-        console.log('lastPrediction is ',prediction.prediction );
-
+ 
         lastPrediction = { ...prediction };
         combined.push(lastPrediction);
       }
     } else {
       if (lastPrediction) {
         lastPrediction.end_time = prediction.start_time; // Set end time before changing type
-        console.log('lastPrediction is ',prediction.prediction );
-
+ 
       }
       lastPrediction = { ...prediction };
       combined.push(lastPrediction);
@@ -140,7 +138,7 @@ const styles = StyleSheet.create({
    
   },
   detailsContainer: {
-    paddingLeft: 20,
+    paddingHorizontal: 20,
   },
   detailRow: {
     flexDirection: 'row',
