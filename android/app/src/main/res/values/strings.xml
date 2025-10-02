@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SmartWorkForce</string>
+     <string moduleConfig="true" name="CodePushDeploymentKey">22bd4722-b64a-4a4d-90b2-45bd2c463c60</string>
+  <string moduleConfig="true" name="CodePushServerUrl">https://codepush.appsonair.com</string>
 </resources>
