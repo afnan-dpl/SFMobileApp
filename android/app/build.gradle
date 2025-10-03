@@ -85,8 +85,8 @@ android {
         applicationId "com.smartworkforce"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 6
-        versionName "1.5"
+        versionCode 7
+        versionName "1.6"
         multiDexEnabled true
         resValue "string", "CodePushDeploymentKey", "22bd4722-b64a-4a4d-90b2-45bd2c463c60"
     }
