@@ -16,6 +16,8 @@ import com.microsoft.codepush.react.CodePush;
 
 public class MainApplication extends Application implements ReactApplication {
 
+
+  
   private final ReactNativeHost mReactNativeHost =
       new DefaultReactNativeHost(this) {
         @Override
@@ -32,6 +34,11 @@ public class MainApplication extends Application implements ReactApplication {
           return packages;
 
         }
+
+          @Override
+          protected String getJSBundleFile() {
+              return CodePush.getJSBundleFile();
+          }
 
         @Override
         protected String getJSMainModuleName() {

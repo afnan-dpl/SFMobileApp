@@ -10,6 +10,9 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:allowBackup="false"
       android:theme="@style/AppTheme">
+        <meta-data
+            android:name="AppsonairAppId"
+            android:value="22bd4722-b64a-4a4d-90b2-45bd2c463c60" />
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"

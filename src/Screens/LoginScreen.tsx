@@ -48,7 +48,7 @@ function LoginScreen({ navigation }) {
       <View style={styles.spacer} />
       <Text style={styles.label}>Username</Text>
       <TextInput
-        placeholder="Enter your username for testing purpose"
+        placeholder="Enter your username"
         value={username}
         onChangeText={setUsername}
         style={styles.input}

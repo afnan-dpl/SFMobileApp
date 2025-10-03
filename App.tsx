@@ -5,7 +5,7 @@
  * @format
  */
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import type { PropsWithChildren } from 'react';
 import {
   StyleSheet,
@@ -20,10 +20,38 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import {NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import AppNavigator from "./src/AppNavigator";
 
 
+import CodePush, { DownloadProgress } from 'react-native-code-push';
+
+const [progress, setProgress] = useState<DownloadProgress | null>(null);
+
+
+useEffect(() => {
+  CodePush.sync(
+    {
+      installMode: CodePush.InstallMode.ON_NEXT_RESTART,
+      updateDialog: true, // shows default dialog
+    },
+    (status) => {
+      console.log("CodePush status:", status);
+    },
+    (downloadProgress) => {
+      console.log(
+        `Downloaded ${downloadProgress.receivedBytes} of ${downloadProgress.totalBytes} bytes.`
+      );
+      setProgress(downloadProgress);
+    }
+  );
+}, []);
+
+let codePushOptions = {
+  checkFrequency: CodePush.CheckFrequency.ON_APP_START, 
+  installMode: CodePush.InstallMode.ON_NEXT_RESTART,
+  mandatoryInstallMode: CodePush.InstallMode.IMMEDIATE,
+};
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -94,4 +122,6 @@ const styles = StyleSheet.create({
 
 });
 
-export default App;
+const CodePushApp = CodePush(codePushOptions)(App);
+
+export default CodePushApp;
