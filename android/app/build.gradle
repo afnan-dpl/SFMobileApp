@@ -88,7 +88,7 @@ android {
         versionCode 7
         versionName "1.6"
         multiDexEnabled true
-        resValue "string", "CodePushDeploymentKey", "22bd4722-b64a-4a4d-90b2-45bd2c463c60"
+        // resValue "string", "CodePushDeploymentKey", "22bd4722-b64a-4a4d-90b2-45bd2c463c60"
     }
     signingConfigs {
         debug {
