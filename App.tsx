@@ -25,6 +25,9 @@ import AppNavigator from "./src/AppNavigator";
 
 
 import CodePush, { DownloadProgress } from 'react-native-code-push';
+import { sync, type AppSyncResponse } from "appsonair-react-native-appsync";
+
+
 
 
 
@@ -41,7 +44,14 @@ let codePushOptions = {
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   const [progress, setProgress] = useState<DownloadProgress | null>(null);
+const [data, setData] = useState<AppSyncResponse | null>(null);
 
+useEffect(() => {
+  sync().then((res) => {
+    console.log('Response is ', res)
+    setData(res);
+  });
+}, []);
 
   useEffect((): void => {
     LogBox.ignoreAllLogs();
