@@ -85,10 +85,9 @@ android {
         applicationId "com.smartworkforce"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 9
-        versionName "1.8"
+        versionCode 8
+        versionName "1.7"
         multiDexEnabled true
-        // resValue "string", "CodePushDeploymentKey", "22bd4722-b64a-4a4d-90b2-45bd2c463c60"
     }
     signingConfigs {
         debug {
@@ -145,3 +144,4 @@ dependencies {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"

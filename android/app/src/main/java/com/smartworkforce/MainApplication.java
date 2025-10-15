@@ -1,6 +1,8 @@
 package com.smartworkforce;
 
 import android.app.Application;
+import android.util.Log;
+
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
@@ -26,11 +28,12 @@ public class MainApplication extends Application implements ReactApplication {
         protected List<ReactPackage> getPackages() {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
-            // packages.add(new CodePush(
-            //         "22bd4722-b64a-4a4d-90b2-45bd2c463c60",
-            //         getApplicationContext(),
-            //         BuildConfig.DEBUG
-            // ));
+            packages.add(new CodePush(
+                    "nvQ_N2mZlEj4difU97ikCz9fk0KrL5Dc6wE",
+                    getApplicationContext(),
+                    BuildConfig.DEBUG,
+                    "https://codepush.appsonair.com"
+            ));
           return packages;
 
         }
