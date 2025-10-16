@@ -48,7 +48,7 @@ function LoginScreen({ navigation }) {
       <View style={styles.spacer} />
       <Text style={styles.label}>Username</Text>
       <TextInput
-        placeholder="Enter your username for Afnan V3"
+        placeholder="Enter your username for Afnan Group"
         value={username}
         onChangeText={setUsername}
         style={styles.input}
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: 'white',
+    backgroundColor: 'black',
   },
   headerImage: {
     width: 198,
