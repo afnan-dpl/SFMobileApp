@@ -5,8 +5,8 @@ require Pod::Executable.execute_command('node', ['-p',
     {paths: [process.argv[1]]},
   )', __dir__]).strip
 
-  platform :ios, '14.0'
-  IOS_VERSION = '14.0'
+  platform :ios, '15.5'
+  IOS_VERSION = '15.5'
 
   inhibit_all_warnings!
   prepare_react_native_project!
